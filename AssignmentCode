@@ -1,0 +1,235 @@
+import Foundation
+
+class AccountHolder{
+    var accountHolderName : String
+    var accountNumber : Int
+    var mobileNumber : Int
+    let email : String
+    
+    init?(accountHolderName : String, accountNumber : Int, mobileNumber : Int, email : String){
+        
+        self.accountHolderName = accountHolderName
+        self.accountNumber = accountNumber
+        
+        if mobileNumber > 0{
+            self.mobileNumber = mobileNumber
+        }else{
+            return nil
+        }
+        
+        if email.count > 0{
+            self.email = email
+        }else{
+            return nil
+        }
+    }
+}
+
+class Account{
+    var accountNumber : Int
+    var accountType : [String]
+    var balance : Double
+    
+    
+    init(accountNumber : Int, accountType : [String], balance : Double){
+        self.accountNumber = accountNumber
+        self.accountType = accountType
+        self.balance = balance
+    }
+    
+    func AccrueIntrest()->Int{
+        let interest_rate = 0.08
+        var balance = accountHolder.balance
+        let balance = balance*(balance * interest_rate / 365)
+    }
+}
+
+protocol CreateBankAccountProtocol{
+    var accountHolderName: String {get set}
+    var initialAmount: Int {get set}
+    
+    func registerAccount(name : String, age : Int, address : String, accountType : [String], documents : Any)->String
+    
+}
+
+class NewAccountRegisteration:CreateBankAccountProtocol{
+    var accountHolderName: String
+    var initialAmount: Int
+    var name : String
+    var age : Int
+    var documents : Any
+    var address : String
+    var accountType : [String]
+    let accountNumber : Int
+    
+    init?(name : String, age : Int, documents : Any, address : String, accountNumber : Int, accountType : [String]){
+        self.name = name
+        self.accountType = accountType
+        self.age = age
+        self.documents = documents
+        self.address = address
+        
+        if accountNumber > 0{
+            self.accountNumber = accountNumber
+        }else{
+            return nil
+        }
+    }
+    
+    func registerAccount(name : String, age : Int, address : String, accountType : [String], documents : Any)->String{
+        if name.count == 0{
+            //program terminates
+        }
+        if age == 0{
+            //program terminates
+        }
+        if address.count == 0{
+            //program terminates
+        }
+        if accountType.count == 0{
+            //program terminates
+        }
+        
+        func checkForDocuments(documents)->Bool{
+            //if all documents present
+            return true //else return false
+        }
+        
+        
+        //registers account into the bank
+        return "Account Created"
+    }
+    
+    
+    func generatedAccountNumber()->Int{
+        
+        var accountNumber = Int.random(in:1000000000000..<10000000000000)
+        if accountNumber == accountNumber{
+            accountNumber = Int.random(in:1000000000000..<10000000000000)
+            //if false regenerate
+        }else{
+            
+        return accountNumber
+        }
+        return accountNumber
+    }
+    
+    
+    func sendNewAccountToBank()->String{
+        return "Account Details Sent To The Bank"
+    }
+    
+}
+
+class Bank{
+    var IFSCcode : String
+    var Bankaddress : String
+    var BranchName : String
+    
+    init(IFSCcode : String, Bankaddress : String, BranchName : String){
+        self.IFSCcode = IFSCcode
+        self.Bankaddress = Bankaddress
+        self.BranchName = BranchName
+    }
+    
+    //contains list of accounts and accountHolder details
+}
+
+class AccountOperation{
+    var depositAmount: Int
+    var withdrawalAmount: Int
+    let balance = Int
+    init?(depositAmount: Int, withdrawalAmount: Int){
+        
+        if depositAmount != 0 {
+            self.depositAmount = depositAmount
+        }else{
+            return nil
+        }
+        
+        if withdrawalAmount != 0 {
+            self.withdrawalAmount = withdrawalAmount
+        }else{
+            return nil
+        }
+    }
+    
+    func checkBalance(balance:Int)->Int{
+        return balance
+    }
+    func deposit()->Int{
+        balance = balance+depositAmount
+    }
+    func withdrawal()->Int{
+        balance = balance+withdrawalAmount
+    }
+}
+
+class CaSa{
+    
+}
+
+class CurrentAccount: CaSa{
+    //Details and requirements on Current account present for the AccountHolder
+}
+
+class SavingAccount: CaSa{
+    //Details and requirements on Savings account present for the AccountHolder
+}
+
+class Deposit{
+    var depositAmount: Int
+    let interest_rate = 0.10
+    
+    func AccrueIntrestForDeposit()->Int{
+        let balance = balance*(balance * interest_rate / 365)
+    }
+}
+
+class Fixed: Deposit{
+    //Details and requirements on Fixed Deposit present for the AccountHolder
+}
+
+class Recurring: Deposit{
+    //Details and requirements on Reccuring Deposit present for the AccountHolder
+}
+
+class Loan{
+    var loanAmount: Int
+    
+}
+
+class HouseLoan: Loan{
+    func requestHouseLoan()-> String{
+        //House Loan Requested From Bank
+    }
+}
+
+class VehicleLoan: Loan{
+    func requestVehicleLoan()-> String{
+        //House Loan Requested From Bank
+    }
+    
+}
+
+class PersonalLoan: Loan{
+    func requestPersonalLoan()-> String{
+        //House Loan Requested From Bank
+    }
+}
+
+let accountHolder = AccountHolder(accountHolderName: "ppppp",accountNumber: 1234567891234,mobileNumber: 7658836525,email: "ohfsfd@gmail.com")
+
+let balance = AccountOperation.checkBalance()
+
+class AccountManager: Account{
+    let accounts = [Account]()
+    
+    func generateAllAccountDetails(accountNumber : Int, accountType : [String], balance : Double)->String{
+        //prints account details of all the accounts in accountManager
+        return "All account details"
+    }
+}
+
+
+
